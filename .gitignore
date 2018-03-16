@@ -124,3 +124,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+/.idea/
+/target/
+/data-channel-canal.iml
