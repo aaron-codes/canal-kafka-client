@@ -44,7 +44,7 @@ public class KafkaCanalClient extends AbstractCanalClient {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaAddress);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, destination);
-        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.IntegerSerializer");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         producer = new KafkaProducer<>(props);
     }
@@ -61,8 +61,8 @@ public class KafkaCanalClient extends AbstractCanalClient {
         logger.debug("canal source data:{}", data.toString());
 
         if (!Objects.isNull(data)) {
-            producer.send(new ProducerRecord(EventChannel.DB2HDFS.name(), data.toString()));
-            logger.debug("sent message-->topic:{}, text:{}", EventChannel.DB2HDFS.name(), data);
+            producer.send(new ProducerRecord(EventChannel.DB2HIVE.name(), data.toString()));
+            logger.debug("sent message-->topic:{}, text:{}", EventChannel.DB2HIVE.name(), data);
         }
     }
 

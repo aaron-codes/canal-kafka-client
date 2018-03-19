@@ -275,7 +275,7 @@ public abstract class AbstractCanalClient implements Serializable {
 
                     eventEntry.setEventId(entry.getHeader().getLogfileName()
                             .concat(String.valueOf(entry.getHeader().getLogfileOffset())));
-                    eventEntry.setEventChannel(EventChannel.DB2HDFS);
+                    eventEntry.setEventChannel(EventChannel.DB2HIVE);
                     eventEntry.setEventTarget(entry.getHeader().getSchemaName().concat(".")
                             .concat(!Pattern.matches(SPLIT_TABLE_REGEX, tableName)
                                     ? tableName
