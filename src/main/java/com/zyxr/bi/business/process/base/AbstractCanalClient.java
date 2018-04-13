@@ -302,6 +302,9 @@ public abstract class AbstractCanalClient implements Serializable {
     protected JSONObject makeColumn(List<Column> columns) {
         JSONObject columnMap = new JSONObject();
         for (Column column : columns) {
+            if(column.getIsKey()) {
+                columnMap.put("_pk", column.getName());
+            }
             columnMap.put(column.getName(), column.getValue());
         }
         return columnMap;
