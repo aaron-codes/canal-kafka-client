@@ -26,7 +26,7 @@ public class EventEntry<T> {
 
     private String eventId;
 
-    private EventChannel eventChannel;
+    private String eventChannel;
 
     private EventType eventType;
 
@@ -40,11 +40,11 @@ public class EventEntry<T> {
 
     private List<T> eventData;
 
-    public EventChannel getEventChannel() {
+    public String getEventChannel() {
         return eventChannel;
     }
 
-    public void setEventChannel(EventChannel eventChannel) {
+    public void setEventChannel(String eventChannel) {
         this.eventChannel = eventChannel;
     }
 
@@ -97,7 +97,7 @@ public class EventEntry<T> {
 
         EventEntry<JSONObject> eventEntry = new EventEntry();
         eventEntry.setEventId("00000010000123231");
-        eventEntry.setEventChannel(EventChannel.DB2HIVE);
+        eventEntry.setEventChannel(EventChannel.DB2HIVE.name());
         eventEntry.setEventType(EventType.INSERT);
         eventEntry.setEventTime(System.currentTimeMillis());
         eventEntry.setEventTarget("testdb.test_table");

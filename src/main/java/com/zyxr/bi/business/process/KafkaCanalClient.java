@@ -9,7 +9,6 @@
 
 package com.zyxr.bi.business.process;
 
-import com.zyxr.bi.business.model.event.EventChannel;
 import com.zyxr.bi.business.model.event.EventEntry;
 import com.zyxr.bi.business.process.base.AbstractCanalClient;
 import com.zyxr.bi.business.util.SystemConfig;
@@ -32,11 +31,15 @@ import java.util.Properties;
 public class KafkaCanalClient extends AbstractCanalClient {
 
     protected String kafkaAddress;
+    protected String topicName;
+
     protected KafkaProducer<Integer, String> producer;
 
     public KafkaCanalClient(String destination) {
         super(destination);
         this.kafkaAddress = SystemConfig.getProperty(destination.concat(".").concat("kafka.address"));
+        this.topicName = SystemConfig.getProperty(destination.concat(".").concat("kafka.topic.name"));
+
     }
 
     @Override
@@ -61,8 +64,9 @@ public class KafkaCanalClient extends AbstractCanalClient {
         logger.debug("canal source data:{}", data.toString());
 
         if (!Objects.isNull(data)) {
-            producer.send(new ProducerRecord(EventChannel.DB2HIVE.name(), data.toString()));
-            logger.debug("sent message-->topic:{}, text:{}", EventChannel.DB2HIVE.name(), data);
+            data.setEventChannel(topicName);
+            producer.send(new ProducerRecord(topicName, data.toString()));
+            logger.debug("sent message-->topic:{}, text:{}", topicName, data);
         }
     }
 

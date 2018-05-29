@@ -19,7 +19,8 @@ package com.zyxr.bi.business.model.event;
 public enum EventChannel {
 
     DB2HIVE("数据库传输 Hive 通道"),
-    DB2HDFS("数据库传输 HDFS 通道");
+    DB2HDFS("数据库传输 HDFS 通道"),
+    DB2HBASE("数据库传输 HBASE 通道");
 
     String desc;
 
