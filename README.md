@@ -79,7 +79,7 @@ BusinessDataSource.kafka.address=hadoop02:9092
 
 ## 源码说明
 
-data-channel-canal 源码地址：http://git.zyxr.com/hadoop/data-collection-zyxrcanal
+data-channel-canal 源码地址：https://github.com/aaron-codes/canal-kafka-client
 
 ![](http://7xigvj.com1.z0.glb.clouddn.com/15211932749261.jpg)
 
